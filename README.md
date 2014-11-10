@@ -1,0 +1,2 @@
+ember-widgets-addon
+===================

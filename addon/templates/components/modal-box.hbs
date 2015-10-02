@@ -1,1 +1,13 @@
-{{yield}}
+<div {{bind-attr class=":modal-dialog sizeClass"}} tabindex="-1">
+  <div class="modal-content">
+    <div class="modal-header">
+      {{view _headerViewClass}}
+    </div>
+    <div class="modal-body">
+      {{view _contentViewClass}}
+    </div>
+    <div class="modal-footer">
+      {{view _footerViewClass}}
+    </div>
+  </div>
+</div>

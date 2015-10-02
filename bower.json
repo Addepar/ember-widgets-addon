@@ -11,6 +11,17 @@
     "ember-resolver": "~0.1.18",
     "jquery": "^1.11.3",
     "loader.js": "ember-cli/loader.js#3.2.1",
-    "qunit": "~1.18.0"
+    "qunit": "~1.18.0",
+
+    "bootstrap": "~3.2.0",
+    "lodash": "~1.2.1",
+    "ember-list-view": "0.0.4",
+    "jquery-ui": "~1.10.1"
+  },
+  devDependencies: {
+    "font-awesome": "~4.0.3",
+    "jquery-browser": "jquery.browser#~0.0.4",
+    "rangy": "timdown/rangy#1c7b22ed77aa8a58b4ec817dc806864b8203e039",
+    "holder": "holderjs#1.9"
   }
 }

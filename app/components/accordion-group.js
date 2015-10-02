@@ -1,1 +1,1 @@
-export { default } from 'ember-widgets/components/accordion/accordion-group';
+export { default } from 'ember-widgets/components/accordion-group';

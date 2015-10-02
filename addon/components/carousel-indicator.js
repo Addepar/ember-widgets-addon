@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import layout from '../../templates/components/carousel/carousel-indicator';
+import layout from '../../templates/components/carousel-indicator';
 
 export default Ember.Component.extend({
   layout: layout

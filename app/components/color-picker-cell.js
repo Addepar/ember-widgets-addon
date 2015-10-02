@@ -1,1 +1,1 @@
-export { default } from 'ember-widgets/components/color-picker/color-picker-cell';
+export { default } from 'ember-widgets/components/color-picker-cell';

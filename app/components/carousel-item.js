@@ -1,1 +1,1 @@
-export { default } from 'ember-widgets/components/carousel/carousel-item';
+export { default } from 'ember-widgets/components/carousel-item';

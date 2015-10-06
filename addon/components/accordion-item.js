@@ -1,5 +1,7 @@
 import Ember from 'ember';
-import layout from '../../templates/components/accordion-item';
+import layout from '../templates/components/accordion-item';
+
+var ENV = {};
 
 export default Ember.Component.extend({
   layout: layout,
@@ -8,7 +10,7 @@ export default Ember.Component.extend({
   title: 'Untitled Accordion Group',
   index: 0,
   isActive: false,
-  content: Ember.computed.alias 'parentView.content',
+  content: Ember.computed.alias('parentView.content'),
 
   isActiveDidChange: Ember.observer(function() {
     this.set('isActive', this.get('parentView.activeIndex') === this.get('index'));
@@ -27,7 +29,8 @@ export default Ember.Component.extend({
   },
 
   click: function(event) {
-    if (!(this.$(event.target).closest('.panel-heading').length > 0)) {
+    // only handle clicks on the title of the accordion
+    if (this.$(event.target).closest('.panel-heading').length === 0) {
       return;
     }
     if (this.get('isActive')) {
@@ -43,11 +46,11 @@ export default Ember.Component.extend({
     $accordionBody.height($accordionBody.height())[0].offsetHeight;
     $accordionBody.removeClass('collapse').removeClass('in').addClass('collapsing');
     $accordionBody.height(0);
-    return this._onTransitionEnd($accordionBody, (function(_this) {
+    return this._onTransitionEnd($accordionBody, function() {
       return function() {
         return $accordionBody.removeClass('collapsing').addClass('collapse');
       };
-    })(this));
+    });
   },
 
   show: function() {
@@ -55,19 +58,19 @@ export default Ember.Component.extend({
     $accordionBody = this.$('.panel-collapse');
     $accordionBody.removeClass('collapse').addClass('collapsing').height(0);
     $accordionBody.height($accordionBody[0]['scrollHeight']);
-    return this._onTransitionEnd($(), (function(_this) {
+    return this._onTransitionEnd($(), function() {
       return function() {
         return $accordionBody.removeClass('collapsing').addClass('in').height('auto');
       };
-    })(this));
+    });
   },
 
   _onTransitionEnd: function($el, callback) {
-    if (Ember.Widgets.DISABLE_ANIMATIONS) {
+    if (ENV.EMBER_WIDGETS_DISABLE_ANIMATIONS) {
       return callback();
     } else {
       return $el.one($.support.transition.end, callback);
     }
   }
-  
+
 });

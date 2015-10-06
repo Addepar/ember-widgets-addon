@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/radio-button-wrapper';
-
+// Clickable wrapper around the actual radio button which allows the text near the
+// button to be clickable too.
 export default Ember.Component.extend({
   layout: layout,
   layoutName: 'radio-button-layout',
@@ -8,7 +9,11 @@ export default Ember.Component.extend({
   disabled: false,
   selectedValue: Ember.computed.alias('parentView.selectedValue'),
   classNames: ['radio-button'],
+
+  // Sets the checked property on the element.
   checked: false,
+
+  // Sets the disabled property on the element.
   _disabled: Ember.computed.or('parentView.disabled', 'disabled'),
   selectedValueChanged: Ember.on('init', Ember.observer(function() {
     var selectedValue;
@@ -19,7 +24,7 @@ export default Ember.Component.extend({
       return this.set('checked', false);
     }
   }, 'selectedValue')),
-  click: function(event) {
+  click: function() {
     if (this.get('_disabled')) {
       return;
     }

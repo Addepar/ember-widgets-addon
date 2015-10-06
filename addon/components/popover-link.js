@@ -30,7 +30,7 @@ export default Ember.Component.extend({
     }
     return contentViewClass;
   }).property('contentViewClass'),
-  click: function(event) {
+  click: function() {
     var popover, popoverView;
     if (this.get('disabled')) {
       return;

@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import layout from '../../templates/components/carousel-indicator';
+import layout from '../templates/components/carousel-indicator';
 
 export default Ember.Component.extend({
-  layout: layout
+  layout: layout,
   classNameBindings: 'isActive:active',
   isActive: Ember.computed(function() {
     return this.get('contentIndex') === this.get('controller.activeIndex');

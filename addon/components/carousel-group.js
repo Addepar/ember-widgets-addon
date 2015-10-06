@@ -1,5 +1,8 @@
 import Ember from 'ember';
-import layout from '../../templates/components/carousel-group';
+import layout from '../templates/components/carousel-group';
+
+// TODO(jordan): fix ember environment disable animations stuff
+var ENV = {};
 
 // A lot of the javascript came from bootstrap.js
 // The bootstrap behavior was limited in how you could treat the slide list as a
@@ -17,15 +20,15 @@ export default Ember.Component.extend({
   classNameBindings: Ember.A(['sliding']),
   activeIndex: 0,
   $nextItem: null,
-  didInsertElement: function() {
-    this._super();
-    // suppose a content array is not specified in use case 1, we use jquery to
-    // figure out how many carousel items are there. This allows us to generate
-    // the correct number of carousel indicator
-    if (!this.get('content')) {
-      return this.set('content', Ember.A(new Array(this.$('.item').length)));
-    }
-  },
+  // didInsertElement: function() {
+  //   this._super();
+  //   // suppose a content array is not specified in use case 1, we use jquery to
+  //   // figure out how many carousel items are there. This allows us to generate
+  //   // the correct number of carousel indicator
+  //   if (!this.get('content')) {
+  //     return this.set('content', Ember.A(new Array(this.$('.item').length)));
+  //   }
+  // },
   willDestroyElement: function() {
     var ref;
     if ((ref = this.$nextItem) != null) {
@@ -73,7 +76,7 @@ export default Ember.Component.extend({
   // We can use slide to transition to any slide with any animation direction.
   // E.g., by specifiying type = 'next' and next = first_slide_index, we can
   // transition to the first slide by moving to the right.
-  #
+
   // type: next | prev
   // next: is the index of the next slide
   slide: function(type, nextIndex) {
@@ -87,7 +90,7 @@ export default Ember.Component.extend({
       ref.off($.support.transition.end);
     }
     this.$nextItem = $(this.$('.item').get(nextIndex));
-    if (!Ember.Widgets.DISABLE_ANIMATIONS) {
+    if (!ENV.EMBER_WIDGETS_DISABLE_ANIMATIONS) {
       this.set('sliding', true);
       this.$nextItem.addClass(type);
       // force reflow
@@ -112,7 +115,7 @@ export default Ember.Component.extend({
     })(this));
   },
   _onTransitionEnd: function($el, callback) {
-    if (Ember.Widgets.DISABLE_ANIMATIONS) {
+    if (ENV.EMBER_WIDGETS_DISABLE_ANIMATIONS) {
       return callback();
     } else {
       return $el.one($.support.transition.end, callback);

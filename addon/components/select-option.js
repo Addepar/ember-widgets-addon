@@ -1,7 +1,9 @@
 import Ember from 'ember';
+import ListItemView from 'list-item-view';
 import layout from '../templates/components/select-option';
 
-export default Ember.ListItemView.extend({
+// The view for each item in the select.
+export default ListItemView.extend({
   layout: layout,
   tagName: 'li',
   templateName: 'select-item',
@@ -15,7 +17,13 @@ export default Ember.ListItemView.extend({
   labelPathDidChange: Ember.observer(function() {
     var labelPath, path;
     labelPath = this.get('labelPath');
+
+    // if it is a raw string, the path is just the context
+    // if labelPath is specified, the path should be context.labelPath
     path = labelPath ? "content." + labelPath : 'content';
+
+    // We are creating a computed property called label that is an alias of
+    // 'context.#{labelPath}'
     Ember.defineProperty(this, 'label', Ember.computed.alias(path));
     return this.notifyPropertyChange('label');
   }, 'content', 'labelPath'),
@@ -26,6 +34,10 @@ export default Ember.ListItemView.extend({
     this._super();
     return this.labelPathDidChange();
   },
+
+  // TODO(Peter): This is a hack. Some computed don't fire properly if
+  // they are dependent on the context. e.g. isHighlighted may not update
+  // if it is dependent on the context. This seems to fix the issue
   updateContext: function(context) {
     this._super(context);
     return this.set('content', context);
@@ -36,6 +48,9 @@ export default Ember.ListItemView.extend({
     }
     this.set('controller.selection', this.get('content'));
     this.get('controller').userDidSelect(this.get('content'));
+    // if there's a selection and the dropdown is unexpanded, we want to
+    // propagate the click event
+    // if the dropdown is expanded and we select something, don't propagate
     if (this.get('controller.showDropdown')) {
       this.processDropDownShown();
       return false;

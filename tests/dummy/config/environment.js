@@ -2,6 +2,15 @@
 
 module.exports = function(environment) {
   var ENV = {
+    contentSecurityPolicy: {
+      'default-src': "'none'",
+      'script-src': "'self'",
+      'font-src': "'self' data: fast.fonts.net",
+      'connect-src': "'self'",
+      'img-src': "'self'",
+      'style-src': "'self' fast.fonts.net",
+      'media-src': "'self'"
+    },
     modulePrefix: 'dummy',
     environment: environment,
     baseURL: '/',

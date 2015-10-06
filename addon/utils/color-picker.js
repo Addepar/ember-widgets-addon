@@ -5,6 +5,7 @@ rgbToHex = function(r, g, b) {
 };
 
 expandHexColor = function(color) {
+  // expand 3-digit hex codes to 6-digit, otherwise don't modify
   return color.replace(/^#([0-9A-F])([0-9A-F])([0-9A-F])$/i, '#$1$1$2$2$3$3');
 };
 
@@ -176,9 +177,9 @@ colorToHex = function(color) {
   return void 0;
 };
 
-export.default = {
+export default {
   colorNameToHexMap: colorNameToHexMap,
   colorToHex: colorToHex,
   expandHexColor: expandHexColor,
   rgbToHex: rgbToHex
-}
+};

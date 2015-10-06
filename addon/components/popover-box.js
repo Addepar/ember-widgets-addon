@@ -1,15 +1,21 @@
 import Ember from 'ember';
 import layout from '../templates/components/popover-box';
 
-Ember.Mixin.create Ember.Widgets.StyleBindingsMixin,
-Ember.Widgets.BodyEventListener
+import StyleBindingsMixin from '../mixins/style-bindings';
+import BodyEventListener from '../mixins/body-event-listener';
 
-PopoverBoxComponent = Ember.Component.extend({
+// TODO(jordan): fix ember environment disable animations stuff
+var ENV = {};
+
+var PopoverBoxComponent = Ember.Component.extend(StyleBindingsMixin,
+BodyEventListener, {
   layout: layout,
   layoutName: 'popover',
   classNames: ['popover'],
   classNameBindings: ['isShowing:in', 'fadeEnabled:fade', 'placement'],
   styleBindings: ['left', 'top', 'display', 'visibility'],
+
+  // The target element to anchor the popover to
   targetElement: null,
   contentViewClass: null,
   fade: true,
@@ -19,7 +25,7 @@ PopoverBoxComponent = Ember.Component.extend({
   visibility: 'hidden',
   debounceTime: 100,
   fadeEnabled: Ember.computed(function() {
-    if (Ember.Widgets.DISABLE_ANIMATIONS) {
+    if (ENV.EMBER_WIDGETS_DISABLE_ANIMATIONS) {
       return false;
     }
     return this.get('fade');
@@ -45,6 +51,8 @@ PopoverBoxComponent = Ember.Component.extend({
   }).property('contentViewClass'),
   didInsertElement: function() {
     this._super();
+    // we want the view to render first and then we snap to position after
+    // it is renered
     this.snapToPosition();
     this.set('visibility', 'visible');
     return this.set('isShowing', true);
@@ -62,11 +70,13 @@ PopoverBoxComponent = Ember.Component.extend({
     }
     this.set('isShowing', false);
     if (this.get('fadeEnabled')) {
-      return this.$().one($.support.transition.end, (function(_this) {
+      return this.$().one($.support.transition.end, () => {
+        // We need to wrap this in a run-loop otherwise ember-testing will complain
+        // about auto run being disabled when we are in testing mode.
         return function() {
-          return Ember.run(_this, _this.destroy);
+          return Ember.run(this, this.destroy);
         };
-      })(this));
+      });
     } else {
       return Ember.run(this, this.destroy);
     }
@@ -88,6 +98,7 @@ PopoverBoxComponent = Ember.Component.extend({
   via http://stackoverflow.com/a/9676655
    */
   computeFrameOffset: function(win, pos) {
+    // find our <iframe> tag within our parent window
     var found, frame, frames, i, len, rect;
     if (pos == null) {
       pos = {
@@ -104,6 +115,7 @@ PopoverBoxComponent = Ember.Component.extend({
         break;
       }
     }
+    // add the offset & recur up the frame chain
     if (found) {
       rect = frame.getBoundingClientRect();
       pos.left += rect.left;
@@ -129,6 +141,9 @@ PopoverBoxComponent = Ember.Component.extend({
     }
     actualWidth = this.$()[0].offsetWidth;
     actualHeight = this.$()[0].offsetHeight;
+    // For context menus where the position is set directly, rather
+    // than by a target element, $target is empty. Therefore, we
+    // set top, left, width, and height manually.
     if (Ember.isEmpty($target)) {
       pos = {
         top: this.get('top'),
@@ -176,6 +191,8 @@ PopoverBoxComponent = Ember.Component.extend({
         break;
     }
     this.correctIfOffscreen();
+    // In the case of a context menu with no target element, there is no
+    // need to display a position arrow.
     if (!Ember.isEmpty($target)) {
       return this.positionArrow();
     }
@@ -226,13 +243,15 @@ PopoverBoxComponent = Ember.Component.extend({
       };
     })(this);
   }),
-  debounceSnapToPosition: Ember.computed(function() {
-    return (function(_this) {
-      return function() {
-        return Ember.run.debounce(_this, _this.snapToPosition, _this.get('debounceTime'));
-      };
-    })(this);
+  // We need to put this in a computed because this is attached to the
+  // resize and scroll events before snapToPosition is defined. We
+  // throttle for 100 ms because that looks nice.
+  debounceSnapToPosition: Ember.computed( () => {
+    return function() {
+      return Ember.run.debounce(this, this.snapToPosition, this.get('debounceTime'));
+    };
   }),
+
   _setupDocumentHandlers: function() {
     this._super();
     if (!this._hideHandler) {
@@ -264,7 +283,7 @@ PopoverBoxComponent = Ember.Component.extend({
     return $(document).off('keyup', this.get('keyHandler'));
   }
 });
-PopoverComponent.reopenClass({
+PopoverBoxComponent.reopenClass({
   rootElement: '.ember-application',
   hideAll: function() {
    return $(document).trigger('popover:hide');
@@ -281,4 +300,4 @@ PopoverComponent.reopenClass({
    return popover;
   }
 });
-export default = PopoverBoxComponent;
+export default PopoverBoxComponent;

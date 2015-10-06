@@ -1,6 +1,11 @@
-{{view Ember.CollectionView tagName="ol" class="carousel-indicators"
-  contentBinding="view.content" itemViewClass="Ember.Widgets.CarouselIndicator"
-}}
+{{!-- {{view Ember.CollectionView tagName="ol" class="carousel-indicators"
+  content="view.content" itemViewClass="Ember.Widgets.CarouselIndicator"
+}} --}}
+<ol class="carousel-indicator">
+  {{#each view.content as |item|}}
+    {{carousel-indicator}}
+  {{/each}}
+</ol>
 <div class="carousel-inner">
   {{yield}}
 </div>

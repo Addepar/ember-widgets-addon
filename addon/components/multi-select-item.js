@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import SelectOption from 'select-option';
 import layout from '../templates/components/multi-select-item';
 
-export default Ember.Component.extend({
+export default SelectOption.extend({
   layout: layout,
   processDropDownShown: function() {
     this._super();

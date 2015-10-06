@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import SelectOption from 'select-option';
 import layout from '../templates/components/select-tooltip-option';
 
-export default Ember.Widgets.SelectOptionView.extend({
+export default SelectOption.extend({
   layout: layout,
   attributeBindings: ['contentLabel:title'],
   contentLabel: Ember.computed(function() {

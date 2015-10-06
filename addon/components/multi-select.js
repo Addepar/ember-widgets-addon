@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import SelectGroup from 'select-group';
 import layout from '../templates/components/multi-select';
 
-export default Ember.Component.extend({
+export default SelectGroup.extend({
   layout: layout,
   layoutName: 'multi-select',
   selections: void 0,
@@ -12,6 +13,9 @@ export default Ember.Component.extend({
   showTooltip: true,
   tooltipItemViewClass: 'Ember.Widgets.MultiSelectTooltipItemView',
   originalItemViewClass: 'Ember.Widgets.MultiSelectItemView',
+  // disable tabindex of the component container to set focus directly to
+  // the input field, which is always visible. This helps reducing one tab
+  // step to navigate back to the previous component
   tabindex: -1,
   values: Ember.computed(function(key, value) {
     var selections, valuePath;
@@ -35,6 +39,9 @@ export default Ember.Component.extend({
     }
   }).property('selections.[]'),
   selectionItemView: Ember.Widgets.MultiSelectOptionView,
+
+  // Invisible span used to make sure there is a good amount of room for either
+  // the placeholder values, or for the query the user has entered.
   invisiblePlaceholderText: Ember.computed(function() {
     if (this.get('query')) {
       return this.get('query');
@@ -44,6 +51,7 @@ export default Ember.Component.extend({
     }
     return this.get('placeholder') || this.get('persistentPlaceholder');
   }).property('query', 'placeholder', 'persistentPlaceholder', 'selections.length'),
+
   searchView: Ember.TextField.extend({
     "class": 'ember-select-input',
     valueBinding: 'parentView.query',
@@ -53,10 +61,16 @@ export default Ember.Component.extend({
       }
       return this.get('parentView.placeholder') || this.get('parentView.persistentPlaceholder');
     }).property('parentView.placeholder', 'parentView.persistentPlaceholder', 'parentView.selections.length'),
-    click: function(event) {
+    click: function() {
       return this.set('parentView.showDropdown', true);
     }
   }),
+
+  // the list of content that is filtered down based on the query entered
+  // in the textbox
+  // Other than observing the changes on each elements, we need to observe the
+  // `filteredContent`, and `sortedFilteredContent` because when the `content`
+  // is overridden by a DS.PromiseArray, somehow it never triggers this function
   preparedContent: Ember.computed(function() {
     var content, selections;
     content = this.get('content');
@@ -64,6 +78,7 @@ export default Ember.Component.extend({
     if (!(content && selections)) {
       return Ember.A([]);
     }
+    // excludes items that are already selected
     if (this.get('sortLabels')) {
       return this.get('sortedFilteredContent').filter(function(item) {
         return !selections.contains(item);
@@ -74,6 +89,9 @@ export default Ember.Component.extend({
       });
     }
   }).property('content.[]', 'filteredContent.[]', 'sortedFilteredContent.[]', 'selections.[]', 'sortLabels', 'filteredContent', 'sortedFilteredContent'),
+
+  // uses single select's "selection" value - adds it to selections and
+  // then clears the selection value so that it can be re-selected
   selectionDidChange: Ember.observer(function() {
     var selection, selections;
     selections = this.get('selections');
@@ -91,6 +109,12 @@ export default Ember.Component.extend({
     return (ref = this.$('.ember-text-field')) != null ? ref.focus() : void 0;
   },
   didInsertElement: function() {
+    // We want to initialize selections to []. This SHOULD NOT be done through
+    // computed properties, because we would run into the following situation.
+    // If the user do selectionsBinding and whatever we are binded to is
+    // undefined then, selections is initialized as undefined. We could change
+    // the value to [] if its value is undefined but the bindings would not have
+    // realized a change and fail to fire.
     this._super();
     if (!this.get('selections')) {
       this.set('selections', Ember.A([]));
@@ -106,6 +130,7 @@ export default Ember.Component.extend({
     }
   },
   removeSelectItem: function(item) {
+    // set the focus back to the searchView because this item will be removed
     var dropdownIsShowing;
     dropdownIsShowing = this.get('showDropdown');
     this.focusTextField();

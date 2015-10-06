@@ -1,5 +1,6 @@
 import Ember from 'ember';
-import layout from '../../templates/components/color-picker';
+import ColorPicker from '../utils/color-picker';
+import layout from '../templates/components/color-picker';
 
 export default Ember.Component.extend({
   layout: layout,
@@ -10,7 +11,7 @@ export default Ember.Component.extend({
   INITIAL_COLOR: '#0074D9',
   selectedColor: '#0074D9',
   selectedColorRGB: Ember.computed(function() {
-    return colorToHex(this.get('selectedColor'));
+    return ColorPicker.colorToHex(this.get('selectedColor'));
   }).property('selectedColor'),
   customColor: '',
   isColorTransparent: Ember.computed.equal('selectedColorRGB', 'transparent'),
@@ -18,9 +19,9 @@ export default Ember.Component.extend({
   setCustomColor: Ember.on('init', Ember.observer(function() {
     var selectedColor;
     selectedColor = this.get('selectedColor');
-    selectedColor = colorToHex(selectedColor);
+    selectedColor = ColorPicker.colorToHex(selectedColor);
     if (this.get('colorRows').find(function(row) {
-      return indexOf.call(row.invoke('toLowerCase'), selectedColor) >= 0;
+      return _.contains(row.invoke('toLowerCase'), selectedColor);
     })) {
       return this.set('customColor', '');
     }

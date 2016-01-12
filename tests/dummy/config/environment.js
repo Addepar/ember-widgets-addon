@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     contentSecurityPolicy: {
       'default-src': "'none'",
-      'script-src': "'self'",
+      'script-src': "'self' 'unsafe-eval' localhost",
       'font-src': "'self' data: fast.fonts.net",
       'connect-src': "'self'",
       'img-src': "'self'",

@@ -16,6 +16,8 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
+      // jQuery 0.12 was released four days ago and ember doesn't know it exists
+      FORCE_JQUERY: true,
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true

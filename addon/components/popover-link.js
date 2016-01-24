@@ -1,9 +1,7 @@
 import Ember from 'ember';
-import layout from '../templates/components/popover-link';
-import PopoverBox from 'popover-box';
+import PopoverBox from '../components/popover-box';
 
 export default Ember.Component.extend({
-  layout: layout,
   classNames: ['popover-link'],
   classNameBindings: ['disabled'],
   placement: 'top',
@@ -51,6 +49,7 @@ export default Ember.Component.extend({
         fade: this.get('fade')
       });
       popover = popoverView.create();
+      // popover.set('controller', this);
       this.set('_popover', popover);
       return popover.appendTo(this.get('rootElement'));
     }

@@ -4,10 +4,12 @@ import layout from '../templates/components/popover-box';
 import StyleBindingsMixin from '../mixins/style-bindings';
 import BodyEventListener from '../mixins/body-event-listener';
 
+import viewParentViewContent from '../templates/view-parent-view-content'
+
 // TODO(jordan): fix ember environment disable animations stuff
 var ENV = {};
 
-var PopoverBoxComponent = Ember.Component.extend(StyleBindingsMixin,
+var PopoverBoxComponent = Ember.View.extend(StyleBindingsMixin,
 BodyEventListener, {
   layout: layout,
   layoutName: 'popover',
@@ -46,7 +48,7 @@ BodyEventListener, {
     }
     return Ember.View.extend({
       content: Ember.computed.alias('parentView.content'),
-      templateName: 'view-parent-view-content'
+      layout: viewParentViewContent
     });
   }).property('contentViewClass'),
   didInsertElement: function() {
@@ -70,13 +72,13 @@ BodyEventListener, {
     }
     this.set('isShowing', false);
     if (this.get('fadeEnabled')) {
-      return this.$().one($.support.transition.end, () => {
-        // We need to wrap this in a run-loop otherwise ember-testing will complain
-        // about auto run being disabled when we are in testing mode.
-        return function() {
+      return this.$().one($.support.transition.end,
+        (function() {
+          // We need to wrap this in a run-loop otherwise ember-testing will complain
+          // about auto run being disabled when we are in testing mode.
           return Ember.run(this, this.destroy);
-        };
-      });
+        }).bind(this)
+      );
     } else {
       return Ember.run(this, this.destroy);
     }
@@ -246,10 +248,10 @@ BodyEventListener, {
   // We need to put this in a computed because this is attached to the
   // resize and scroll events before snapToPosition is defined. We
   // throttle for 100 ms because that looks nice.
-  debounceSnapToPosition: Ember.computed( () => {
+  debounceSnapToPosition: Ember.computed( function() {
     return function() {
       return Ember.run.debounce(this, this.snapToPosition, this.get('debounceTime'));
-    };
+    }.bind(this);
   }),
 
   _setupDocumentHandlers: function() {

@@ -12,119 +12,122 @@ feel.</p>
     <div class="col-md-6">
       <h3>Simple Popover</h3>
       <div class="example-container">
-        {{#popover-link-component tagName="button" class="btn btn-primary"
+        {{#popover-link tagName="button" class="btn btn-primary"
           title="Hello" content="Hello World!"}}
           Show Popover Top
-        {{/popover-link-component}}
+        {{/popover-link}}
       </div>
 
       <h4 class="bumper-30">Application.hbs</h4>
       <div class="highlight">
-<pre class="prettyprint lang-html">&#123;&#123;#popover-link-component tagName=&quot;button&quot;
+<pre class="prettyprint lang-html">&#123;&#123;#popover-link tagName=&quot;button&quot;
   class=&quot;btn btn-primary&quot; title=&quot;Hello&quot;
   content=&quot;Hello World&quot;&#125;&#125;
   Show Popover Button-Left
-&#123;&#123;/popover-link-component&#125;&#125;</pre>
+&#123;&#123;/popover-link&#125;&#125;</pre>
       </div>
 
       <hr>
 
       <h3>Popover with contentViewClass</h3>
       <div class="example-container">
-        {{#popover-link-component tagName="button" class="btn btn-primary"
+        {{#popover-link tagName="button" class="btn btn-primary"
           placement="top-right"
           content="model"
           title="Derp"
-          contentViewClass="App.CustomPopoverContentView"}}
+          contentViewClass=customPopoverContentView}}
           Show Popover Top-Right
-        {{/popover-link-component}}
+        {{/popover-link}}
       </div>
 
       <hr>
 
       <h3>Popover with contentViewClass</h3>
       <div class="example-container">
-        {{#popover-link-component tagName="button" class="btn btn-primary"
+        {{#popover-link tagName="button" class="btn btn-primary"
           placement="right"
           contentBinding="model"
           title="Derp"
-          contentViewClass="App.CustomPopoverContentView"}}
+          contentViewClass=customPopoverContentView}}
           Show Popover Right
-        {{/popover-link-component}}
+        {{/popover-link}}
       </div>
 
       <hr>
 
+      LOOK HERE
+      {{randomVariableName}}
+
       <h3>Popover with contentViewClass</h3>
       <div class="example-container">
-        {{#popover-link-component tagName="button" class="btn btn-primary"
+        {{#popover-link tagName="button" class="btn btn-primary"
           placement="bottom-right"
           contentBinding="model"
           title="Derp"
-          contentViewClass="App.CustomPopoverContentView"}}
+          contentViewClass=customPopoverContentView}}
           Show Popover Bottom-Right
-        {{/popover-link-component}}
+        {{/popover-link}}
       </div>
 
       <hr>
 
       <h3>Popover with contentViewClass</h3>
       <div class="example-container">
-        {{#popover-link-component tagName="button" class="btn btn-primary"
+        {{#popover-link tagName="button" class="btn btn-primary"
           placement="bottom"
           contentBinding="model"
           title="Derp"
-          contentViewClass="App.CustomPopoverContentView"}}
+          contentViewClass=customPopoverContentView}}
           Show Popover Bottom
-        {{/popover-link-component}}
+        {{/popover-link}}
       </div>
 
       <hr>
 
       <h3>Popover with contentViewClass</h3>
       <div class="example-container">
-        {{#popover-link-component tagName="button" class="btn btn-primary"
+        {{#popover-link tagName="button" class="btn btn-primary"
           placement="bottom-left"
           contentBinding="model"
           title="Derp"
-          contentViewClass="App.CustomPopoverContentView"}}
+          contentViewClass=customPopoverContentView}}
           Show Popover Bottom-Left
-        {{/popover-link-component}}
+        {{/popover-link}}
       </div>
 
       <hr>
 
       <h3>Popover with contentViewClass</h3>
       <div class="example-container">
-        {{#popover-link-component tagName="button" class="btn btn-primary"
+        {{#popover-link tagName="button" class="btn btn-primary"
           placement="left"
           contentBinding="model"
           title="Derp"
-          contentViewClass="App.CustomPopoverContentView"}}
+          contentViewClass=customPopoverContentView}}
           Show Popover Left
-        {{/popover-link-component}}
+        {{/popover-link}}
       </div>
     </div>
 
     <div class="col-md-6">
       <h3>Popover with contentViewClass</h3>
       <div class="example-container">
-        {{#popover-link-component tagName="button" class="btn btn-primary"
+        {{#popover-link tagName="button" class="btn btn-primary"
           placement="top-left"
           contentBinding="model"
           title="Derp"
-          contentViewClass="App.CustomPopoverContentView"}}
+          contentViewClass=customPopoverContentView}}
           Show Popover Top-Left
-        {{/popover-link-component}}
+        {{/popover-link}}
       </div>
 
       <h4 class="bumper-30">Application.hbs</h4>
       <div class="highlight">
-<pre class="prettyprint lang-html">&#123;&#123;#popover-link-component tagName=&quot;button&quot;
+<pre class="prettyprint lang-html">&#123;&#123;#popover-link tagName=&quot;button&quot;
   class=&quot;btn btn-primary&quot; placement=&quot;bottom-left&quot;
   contentViewClass=&quot;App.CustomPopoverContentView&quot;&#125;&#125;
   Show Popover Button-Left
-&#123;&#123;/popover-link-component&#125;&#125;</pre>
+&#123;&#123;/popover-link&#125;&#125;</pre>
       </div>
 
       <h4 class="bumper-30">Custom-popover-content.hbs</h4>

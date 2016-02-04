@@ -1,7 +1,7 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-addon');
 
-module.exports = function(defaults) {
+moduleExports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
   });
@@ -22,3 +22,5 @@ module.exports = function(defaults) {
 
   return app.toTree();
 };
+
+module.exports = moduleExports()

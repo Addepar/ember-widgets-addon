@@ -15,7 +15,6 @@
 
     "bootstrap": "~3.2.0",
     "lodash": "~1.2.1",
-    "ember-list-view": "0.0.5",
     "jquery-ui": "~1.10.1"
   },
   "devDependencies": {

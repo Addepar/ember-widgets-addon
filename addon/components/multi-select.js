@@ -14,7 +14,7 @@ export default SelectGroup.extend({
   selections: void 0,
   choicesFieldClass: '',
   placeholder: void 0,
-  persistentPlaceholder: void 0,
+  persistentPlaceholder: '',
   resetQueryOnSelect: true,
   showTooltip: true,
   tooltipItemViewClass: MultiSelectTooltipItemView,

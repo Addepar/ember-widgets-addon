@@ -7,11 +7,11 @@
       <h3>Select with Selection Binding</h3>
       <div class="example-container">
         {{select-group
-          contentBinding="model"
+          content=model
           prompt="Select a Country"
           optionLabelPath="name"
           optionValuePath="name"
-          selectionBinding="selection"
+          selection=selection
           placeholder="Search"
         }}
       </div>
@@ -19,11 +19,11 @@
       <h4 class="bumper-30">Application.hbs</h4>
       <div class="highlight">
 <pre class="prettyprint lang-html">&#123;&#123;select-group
-  contentBinding="model"
+  content=model
   prompt="Select a Country"
   optionLabelPath="name"
   optionValuePath="name"
-  selectionBinding="selection"
+  selection=selection
   placeholder="Search"
 &#125;&#125;</pre>
       </div>
@@ -60,7 +60,7 @@
       <h3>Multi-Select <small>Small</small></h3>
       <div class="example-container">
         {{multi-select
-          contentBinding=model
+          content=model
           optionLabelPath="name"
           optionValuePath="code"
           classNames="multi-select-example"

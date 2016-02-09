@@ -1,14 +1,14 @@
 <div>
-  {{view searchView classBinding="searchFieldClass" disabled=disabled}}
+  {{view searchView class=searchFieldClass disabled=disabled}}
 </div>
 {{#unless hasNoResults}}
   <div class="dropdown-menu">
     {{view listView
       tagName="ul"
       classNames="ember-typeahead-results"
-      heightBinding="dropdownHeight"
-      rowHeightBinding="rowHeight"
-      contentBinding="groupedContent"
+      height=dropdownHeight
+      rowHeight=rowHeight
+      content=groupedContent
       itemViewClass=itemView
     }}
   </div>

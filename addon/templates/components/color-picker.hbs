@@ -2,12 +2,12 @@
   <a class="clearfix color-picker-dropdown-button" data-toggle="dropdown" href="#">
     {{#if isColorTransparent}}
       {{view Ember.Widgets.ColorPickerCell
-        colorBinding="selectedColor"
+        color=selectedColor
         classNames="color-picker-cell-transparent"
       }}
     {{else}}
       {{view Ember.Widgets.ColorPickerCell
-        colorBinding="selectedColor"
+        color=selectedColor
       }}
     {{/if}}
     <span class="pull-right fa fa-caret-down color-picker-dropdown-caret"></span>
@@ -18,7 +18,7 @@
       <div class="color-row clearfix">
         {{#each color in row}}
           {{view Ember.Widgets.ColorPickerCell
-            colorBinding = "color"
+            color=color
            }}
         {{/each}}
       </div>
@@ -30,7 +30,7 @@
           <span class="input-group-addon
             color-picker-custom-preview {{if isCustomColor 'active'}}"
             style="customColorCSS" {{action "sendCustomColor"}}></span>
-          {{view Ember.TextField valueBinding="customColor"
+          {{view Ember.TextField value=customColor
             class="form-control input-sm"
             type="text"
             placeholder="HEX code"

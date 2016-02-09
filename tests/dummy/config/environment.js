@@ -5,10 +5,10 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'default-src': "'none'",
       'script-src': "'self' 'unsafe-eval' localhost",
-      'font-src': "'self' data: fast.fonts.net",
+      'font-src': "'self' 'unsafe-inline' data: fast.fonts.net",
       'connect-src': "'self'",
       'img-src': "'self'",
-      'style-src': "'self' fast.fonts.net",
+      'style-src': "'self' 'unsafe-inline' fast.fonts.net",
       'media-src': "'self'"
     },
     modulePrefix: 'dummy',

@@ -1,4 +1,4 @@
-import SelectOption from 'select-option';
+import SelectOption from './select-option';
 import layout from '../templates/components/multi-select-item';
 
 export default SelectOption.extend({

@@ -6,7 +6,7 @@
     <div class="col-md-6">
       <h3>Select with Selection Binding</h3>
       <div class="example-container">
-        {{select-component
+        {{select-group
           contentBinding="model"
           prompt="Select a Country"
           optionLabelPath="name"
@@ -18,7 +18,7 @@
 
       <h4 class="bumper-30">Application.hbs</h4>
       <div class="highlight">
-<pre class="prettyprint lang-html">&#123;&#123;select-component
+<pre class="prettyprint lang-html">&#123;&#123;select-group
   contentBinding="model"
   prompt="Select a Country"
   optionLabelPath="name"
@@ -32,8 +32,8 @@
     <div class="col-md-6">
       <h3>Multi-Select</h3>
       <div class="example-container">
-        {{multi-select-component
-          contentBinding="model"
+        {{multi-select
+          content=model
           optionLabelPath="name"
           optionValuePath="code"
           classNames="multi-select-example"
@@ -43,8 +43,8 @@
 
       <h4 class="bumper-30">Application.hbs</h4>
       <div class="highlight">
-<pre class="prettyprint lang-html">&#123;&#123;multi-select-component
-  contentBinding="model"
+<pre class="prettyprint lang-html">&#123;&#123;multi-select
+  content=model
   optionLabelPath="name"
   optionValuePath="code"
   classNames="multi-select-example"
@@ -59,8 +59,8 @@
     <div class="col-md-6">
       <h3>Multi-Select <small>Small</small></h3>
       <div class="example-container">
-        {{multi-select-component
-          contentBinding="model"
+        {{multi-select
+          contentBinding=model
           optionLabelPath="name"
           optionValuePath="code"
           classNames="multi-select-example"
@@ -70,8 +70,8 @@
 
       <h4 class="bumper-30">Application.hbs</h4>
       <div class="highlight">
-<pre class="prettyprint lang-html">&#123;&#123;multi-select-component
-  contentBinding="model"
+<pre class="prettyprint lang-html">&#123;&#123;multi-select
+  content=model
   optionLabelPath="name"
   optionValuePath="code"
   classNames="multi-select-example"

@@ -2,11 +2,16 @@ import Ember from 'ember';
 import layout from '../templates/components/select-group';
 
 import BodyEventListener from '../mixins/body-event-listener';
-import ResizeHandlerMixin from '../mixins/resize-handler';
+import AddeparMixins from '../mysterious-dependency/ember-addepar-mixins/resize_handler';
 import KeyboardHelper from '../mixins/keyboard-helper';
 
+import ListView from 'ember-list-view'
+
+import SelectTooltipOptionView from './select-tooltip-option'
+import SelectOptionView from './select-option'
+
 export default Ember.Component.extend(BodyEventListener,
-ResizeHandlerMixin, KeyboardHelper,
+AddeparMixins.ResizeHandlerMixin, KeyboardHelper,
 {
   layout: layout,
   layoutName: 'select',
@@ -52,8 +57,8 @@ ResizeHandlerMixin, KeyboardHelper,
   // This augments the dropdown to provide a place for adding a select menu that
   // possibly says 'create item' or something along that line
   selectMenuView: null,
-  tooltipItemViewClass: 'Ember.Widgets.SelectTooltipOptionView',
-  originalItemViewClass: 'Ember.Widgets.SelectOptionView',
+  tooltipItemViewClass: SelectTooltipOptionView,
+  originalItemViewClass: SelectOptionView,
 
   // a map of accepted keys to show dropdown when being pressed
   // these are keys to show dropdown when being pressed
@@ -185,15 +190,15 @@ ResizeHandlerMixin, KeyboardHelper,
       }
     }, 'parentView.showDropdown')
   }),
-  // This is a hack. Ember.ListView doesn't handle case when total height
+  // This is a hack. ListView doesn't handle case when total height
   // is less than height properly
-  listView: Ember.ListView.extend({
+  listView: ListView.extend({
     style: Ember.computed(function() {
       var height;
       height = Math.min(this.get('height'), this.get('totalHeight'));
       return "height: " + height + "px";
-    })
-  }.property('height', 'totalHeight')),
+    }).property('height', 'totalHeight')
+  }),
 
   // the list of content that is filtered down based on the query entered
   // in the textbox

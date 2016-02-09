@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import layout from '../templates/components/multi-select-option';
+import MultiSelectItemTemplate from '../templates/components/multi-select-item'
 
-export default Ember.Component.extend({
+export default Ember.View.extend({
   layout: layout,
   tagName: 'li',
-  templateName: 'multi-select-item',
+  template: MultiSelectItemTemplate,
   classNames: 'ember-select-search-choice',
   labelPath: Ember.computed.alias('controller.optionLabelPath'),
   didInsertElement: function() {

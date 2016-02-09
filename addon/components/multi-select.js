@@ -1,18 +1,24 @@
 import Ember from 'ember';
-import SelectGroup from 'select-group';
+import SelectGroup from './select-group';
 import layout from '../templates/components/multi-select';
+import MultiSelectOptionView from './multi-select-option'
+import MultiSelectItemView from './multi-select-item'
+import MultiSelectTooltipItemView from './multi-select-tooltip-item'
 
+/**
+ * @augments SelectGroup
+ * @augments Ember.Component
+*/
 export default SelectGroup.extend({
-  layout: layout,
-  layoutName: 'multi-select',
+  layout: layout, // I thought this was supposed to default-resolve
   selections: void 0,
   choicesFieldClass: '',
   placeholder: void 0,
   persistentPlaceholder: void 0,
   resetQueryOnSelect: true,
   showTooltip: true,
-  tooltipItemViewClass: 'Ember.Widgets.MultiSelectTooltipItemView',
-  originalItemViewClass: 'Ember.Widgets.MultiSelectItemView',
+  tooltipItemViewClass: MultiSelectTooltipItemView,
+  originalItemViewClass: MultiSelectTooltipItemView,
   // disable tabindex of the component container to set focus directly to
   // the input field, which is always visible. This helps reducing one tab
   // step to navigate back to the previous component
@@ -38,7 +44,7 @@ export default SelectGroup.extend({
       }
     }
   }).property('selections.[]'),
-  selectionItemView: Ember.Widgets.MultiSelectOptionView,
+  selectionItemView: MultiSelectOptionView,
 
   // Invisible span used to make sure there is a good amount of room for either
   // the placeholder values, or for the query the user has entered.

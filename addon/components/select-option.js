@@ -1,13 +1,13 @@
 import Ember from 'ember';
-import ListItemView from 'list-item-view';
+import ListItemView from 'ember-list-view/list-item-view';
 import layout from '../templates/components/select-option';
+import SelectItemView from '../templates/select-item'
 
 // The view for each item in the select.
 export default ListItemView.extend({
-  layout: layout,
+  // layout: layout,
   tagName: 'li',
-  templateName: 'select-item',
-  layoutName: 'select-item-layout',
+  template: SelectItemView,
   classNames: 'ember-select-result-item',
   classNameBindings: Ember.A(['content.isGroupOption:ember-select-group', 'isHighlighted:highlighted']),
   labelPath: Ember.computed.alias('controller.optionLabelPath'),

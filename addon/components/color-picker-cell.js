@@ -3,7 +3,7 @@ import layout from '../templates/components/color-picker-cell';
 import StyleBindingsMixin from '../mixins/style-bindings';
 import ColorPicker from '../utils/color-picker';
 
-export default Ember.Component.extend(StyleBindingsMixin, {
+export default Ember.View.extend(StyleBindingsMixin, {
   layout: layout,
   templateName: 'color-picker-cell',
   classNames: ['pull-left', 'color-picker-cell'],

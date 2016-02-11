@@ -4,7 +4,7 @@ import layout from '../templates/components/color-picker';
 
 export default Ember.Component.extend({
   layout: layout,
-  layoutName: 'color-picker',
+  // layoutName: 'color-picker',
   classNames: ['color-picker-button'],
   colorPickerPlacement: 'right',
   dropdownClass: null,

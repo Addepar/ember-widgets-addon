@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/carousel-group';
+import CarouselIndicator from './carousel-indicator';
 
 // TODO(jordan): fix ember environment disable animations stuff
 var ENV = {};
@@ -19,16 +20,17 @@ export default Ember.Component.extend({
   classNames: ['carousel', 'slide'],
   classNameBindings: Ember.A(['sliding']),
   activeIndex: 0,
+  carouselIndicatorClass: CarouselIndicator,
   $nextItem: null,
-  // didInsertElement: function() {
-  //   this._super();
-  //   // suppose a content array is not specified in use case 1, we use jquery to
-  //   // figure out how many carousel items are there. This allows us to generate
-  //   // the correct number of carousel indicator
-  //   if (!this.get('content')) {
-  //     return this.set('content', Ember.A(new Array(this.$('.item').length)));
-  //   }
-  // },
+  didInsertElement: function() {
+    this._super();
+    // suppose a content array is not specified in use case 1, we use jquery to
+    // figure out how many carousel items are there. This allows us to generate
+    // the correct number of carousel indicator
+    if (!this.get('content')) {
+      return this.set('content', Ember.A(new Array(this.$('.item').length)));
+    }
+  },
   willDestroyElement: function() {
     var ref;
     if ((ref = this.$nextItem) != null) {

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import layout from '../templates/components/carousel-indicator';
 
-export default Ember.Component.extend({
+export default Ember.View.extend({
   layout: layout,
   classNameBindings: 'isActive:active',
   isActive: Ember.computed(function() {

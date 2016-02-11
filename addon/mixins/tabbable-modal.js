@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import KeyboardHelper from 'keyboard-helper';
+import KeyboardHelper from './keyboard-helper';
 
 export default Ember.Mixin.create(KeyboardHelper, {
   // these are variables from the modal component (modal.coffee) to enforce

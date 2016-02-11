@@ -1,10 +1,11 @@
 import Ember from 'ember';
 import CustomModalContentView from 'dummy/views/custom-modal-content'
+import ModalComponent from 'ember-widgets/components/modal-box'
 
 export default Ember.Route.extend({
   actions: {
     showModal: function() {
-      return Ember.Widgets.ModalComponent.popup({
+      return ModalComponent.popup({
         targetObject: this,
         confirm: "modalConfirm",
         cancel: "modalCancel",
@@ -12,7 +13,7 @@ export default Ember.Route.extend({
       });
     },
     showSmallModal: function() {
-      return Ember.Widgets.ModalComponent.popup({
+      return ModalComponent.popup({
         targetObject: this,
         confirm: "modalConfirm",
         cancel: "modalCancel",
@@ -21,7 +22,7 @@ export default Ember.Route.extend({
       });
     },
     showModalWithCustomContent: function() {
-      return Ember.Widgets.ModalComponent.popup({
+      return ModalComponent.popup({
         targetObject: this,
         confirm: "modalConfirm",
         cancel: "modalCancel",

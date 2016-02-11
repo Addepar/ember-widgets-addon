@@ -4,10 +4,14 @@ import layout from '../templates/components/modal-box';
 import StyleBindingsMixin from '../mixins/style-bindings';
 import TabbableModal from '../mixins/tabbable-modal';
 
+import ModalHeader from '../templates/components/modal_header'
+import ModalContent from '../templates/components/modal-content'
+import ModalFooter from '../templates/components/modal-footer'
+
 // TODO(jordan): fix ember environment disable animations stuff
 var ENV = {};
 
-export default Ember.Component.extend(StyleBindingsMixin,
+var ModalComponent = Ember.Component.extend(StyleBindingsMixin,
 TabbableModal,
 {
   layout: layout,
@@ -41,13 +45,13 @@ TabbableModal,
   }).property('fade'),
   _runFocusTabbable: null,
   headerViewClass: Ember.View.extend({
-    templateName: 'modal_header'
+    template: ModalHeader
   }),
   contentViewClass: Ember.View.extend({
-    template: Ember.Handlebars.compile("<p>{{content}}</p>")
+    template: ModalContent
   }),
   footerViewClass: Ember.View.extend({
-    templateName: 'modal-footer'
+    template: ModalFooter
   }),
   _headerViewClass: Ember.computed(function() {
     var headerViewClass;
@@ -242,3 +246,27 @@ TabbableModal,
     return this.$().off($.support.transition.end);
   }
 });
+
+ModalComponent.reopenClass({
+  rootElement: '.ember-application',
+  poppedModal: null,
+  hideAll: function() {
+    return $(document).trigger('modal:hide');
+  },
+  popup: function(options) {
+    var modal, rootElement;
+    if (options == null) {
+      options = {};
+    }
+    this.hideAll();
+    rootElement = options.rootElement || this.rootElement;
+    modal = this.create(options);
+    if (modal.get('targetObject.container')) {
+      modal.set('container', modal.get('targetObject.container'));
+    }
+    modal.appendTo(rootElement);
+    return modal;
+  }
+});
+
+export default ModalComponent;

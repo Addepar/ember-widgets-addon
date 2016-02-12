@@ -30,9 +30,9 @@
           <span class="input-group-addon
             color-picker-custom-preview {{if isCustomColor 'active'}}"
             style="customColorCSS" {{action "sendCustomColor"}}></span>
-          {{view Ember.TextField value=customColor
+          {{input type="text"
+            value=customColor
             class="form-control input-sm"
-            type="text"
             placeholder="HEX code"
           }}
         </div>

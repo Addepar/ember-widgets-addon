@@ -1,13 +1,6 @@
-{{collection Ember.CollectionView tagName="ol" class="carousel-indicators"
+{{collection tagName="ol" class="carousel-indicators"
   content=view.content itemViewClass=carouselIndicatorClass
 }}
-{{!--
-<ol class="carousel-indicator">
-  {{#each view.content as |item|}}
-    {{carousel-indicator}}
-  {{/each}}
-</ol>
---}}
 <div class="carousel-inner">
   {{yield}}
 </div>

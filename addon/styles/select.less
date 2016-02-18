@@ -276,7 +276,8 @@
   padding: 4px 4px 0 4px;
 
   input {
-    background: #fff url('../img/select2.png') no-repeat 100% -22px;
+    // note: accessed through public -> dist/ember-widgets in application
+    background: #fff url('../ember-widgets/img/select2.png') no-repeat 100% -22px;
     padding: 3px 20px 3px 5px;
     outline: 0;
     border: 1px solid #aaa;
@@ -288,7 +289,8 @@
     .border-radius(0);
 
     &.select2-active {
-      background: #fff url('../img/spinner.gif') no-repeat 100%;
+      // note: accessed through public -> dist/ember-widgets in application
+      background: #fff url('../ember-widgets/img/spinner.gif') no-repeat 100%;
     }
   }
 }

@@ -11,8 +11,6 @@ moduleExports = function(defaults) {
   app.import(app.bowerDirectory + '/jquery-ui/ui/jquery-ui.custom.js');
   app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
   app.import(app.bowerDirectory + '/lodash/lodash.js');
-  app.import(app.bowerDirectory + '/rangy/currentrelease/rangy-core.js');
-  app.import(app.bowerDirectory + '/rangy/currentrelease/rangy-selectionsaverestore.js');
   /*
     This build file specifes the options for the dummy test app of this
     addon, located in `/tests/dummy`

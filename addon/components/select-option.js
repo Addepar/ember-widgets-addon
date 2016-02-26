@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ListItemView from 'ember-list-view/list-item-view';
-import layout from '../templates/components/select-option';
-import SelectItemView from '../templates/select-item'
+// import layout from '../templates/components/select-option';
+import SelectItemView from '../templates/select-item';
 
 // The view for each item in the select.
 export default ListItemView.extend({

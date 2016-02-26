@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import layout from '../templates/components/multi-select-option';
-import MultiSelectItemTemplate from '../templates/components/multi-select-item'
+import MultiSelectItemTemplate from '../templates/components/multi-select-item';
 
 export default Ember.View.extend({
   layout: layout,

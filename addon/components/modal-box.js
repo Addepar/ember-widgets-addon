@@ -4,9 +4,9 @@ import layout from '../templates/components/modal-box';
 import StyleBindingsMixin from '../mixins/style-bindings';
 import TabbableModal from '../mixins/tabbable-modal';
 
-import ModalHeader from '../templates/components/modal_header'
-import ModalContent from '../templates/components/modal-content'
-import ModalFooter from '../templates/components/modal-footer'
+import ModalHeader from '../templates/components/modal_header';
+import ModalContent from '../templates/components/modal-content';
+import ModalFooter from '../templates/components/modal-footer';
 
 // TODO(jordan): fix ember environment disable animations stuff
 var ENV = {};

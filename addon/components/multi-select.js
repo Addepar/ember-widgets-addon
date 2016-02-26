@@ -1,9 +1,9 @@
 import Ember from 'ember';
 import SelectGroup from './select-group';
 import layout from '../templates/components/multi-select';
-import MultiSelectOptionView from './multi-select-option'
-import MultiSelectItemView from './multi-select-item'
-import MultiSelectTooltipItemView from './multi-select-tooltip-item'
+import MultiSelectOptionView from './multi-select-option';
+// import MultiSelectItemView from './multi-select-item';
+import MultiSelectTooltipItemView from './multi-select-tooltip-item';
 
 /**
  * @augments SelectGroup

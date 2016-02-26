@@ -4,7 +4,7 @@ import layout from '../templates/components/popover-box';
 import StyleBindingsMixin from '../mixins/style-bindings';
 import BodyEventListener from '../mixins/body-event-listener';
 
-import viewParentViewContent from '../templates/view-parent-view-content'
+import viewParentViewContent from '../templates/view-parent-view-content';
 
 // TODO(jordan): fix ember environment disable animations stuff
 var ENV = {};

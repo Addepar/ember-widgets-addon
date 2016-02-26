@@ -5,10 +5,10 @@ import BodyEventListener from '../mixins/body-event-listener';
 import AddeparMixins from '../mysterious-dependency/ember-addepar-mixins/resize_handler';
 import KeyboardHelper from '../mixins/keyboard-helper';
 
-import ListView from 'ember-list-view'
+import ListView from 'ember-list-view';
 
-import SelectTooltipOptionView from './select-tooltip-option'
-import SelectOptionView from './select-option'
+import SelectTooltipOptionView from './select-tooltip-option';
+import SelectOptionView from './select-option';
 
 export default Ember.Component.extend(BodyEventListener,
 AddeparMixins.ResizeHandlerMixin, KeyboardHelper,

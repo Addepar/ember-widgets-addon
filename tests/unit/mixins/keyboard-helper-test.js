@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import KeyboardHelperMixin from '../../../mixins/keyboard-helper';
+import KeyboardHelperMixin from 'ember-widgets/mixins/keyboard-helper';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | keyboard helper');

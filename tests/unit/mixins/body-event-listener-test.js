@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import BodyEventListenerMixin from '../../../mixins/body-event-listener';
+import BodyEventListenerMixin from 'ember-widgets/mixins/body-event-listener';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | body event listener');

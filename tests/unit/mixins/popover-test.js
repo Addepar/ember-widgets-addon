@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import PopoverMixin from '../../../mixins/popover';
+import PopoverMixin from 'ember-widgets/mixins/popover';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | popover');

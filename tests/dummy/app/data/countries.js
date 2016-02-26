@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 // The view for each item in the select.
 export default Ember.A([
     {name: 'Afghanistan', code: 'AF'},
@@ -243,4 +245,4 @@ export default Ember.A([
     {name: 'Yemen', code: 'YE'},
     {name: 'Zambia', code: 'ZM'},
     {name: 'Zimbabwe', code: 'ZW'}
-])
+]);

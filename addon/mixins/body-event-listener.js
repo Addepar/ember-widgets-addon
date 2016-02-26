@@ -18,26 +18,29 @@ export default Ember.Mixin.create({
     return this._removeDocumentHandlers();
   },
   _setupDocumentHandlers: function() {
+    var _this = this;
     if (this._clickHandler || this.isDestroying) {
       return;
     }
-    this._clickHandler = (function(_this) {
-      return function(event) {
-        return Ember.run(function() {
-          if ((_this.get('_state') || _this.get('state')) === 'inDOM' && Ember.isEmpty(_this.$().has($(event.target)))) {
-            // check if event.target still exists in DOM
-            if ($.contains(document.body, event.target)) {
-              // bodyClick starts taking parameter "event" to make room to control
-              // some special cases where there is a component added to the body
-              // instead of the app (such as bootstrap date-picker).
-              // If it is the case, we can check for the event target to prevent
-              // the popover from being closed.
-              return _this.bodyClick(event);
-            }
+
+    this._clickHandler = function(event) {
+      return Ember.run(function() {
+        if ((_this.get('_state') || _this.get('state')) === 'inDOM' && Ember.isEmpty(_this.$().has($(event.target)))) {
+          // check if event.target still exists in DOM
+          var checkContain = $.contains(document.body, event.target);
+          var isBodyElement = event.target === document.body;
+          if (checkContain || isBodyElement) {
+            // bodyClick starts taking parameter "event" to make room to control
+            // some special cases where there is a component added to the body
+            // instead of the app (such as bootstrap date-picker).
+            // If it is the case, we can check for the event target to prevent
+            // the popover from being closed.
+            return _this.bodyClick(event);
           }
-        });
-      };
-    })(this);
+        }
+      });
+    };
+
     return $(this.get('bodyElementSelector')).on("click", this._clickHandler);
   },
   _removeDocumentHandlers: function() {

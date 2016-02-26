@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import jQuery from 'jquery';
 
-var AddeparMixins
+var AddeparMixins;
 
 AddeparMixins = Ember.AddeparMixins || Ember.Namespace.create();
 
@@ -52,4 +53,4 @@ AddeparMixins.ResizeHandlerMixin = Ember.Mixin.create({
   }
 });
 
-export default AddeparMixins
+export default AddeparMixins;

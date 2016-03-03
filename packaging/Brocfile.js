@@ -21,24 +21,24 @@ var addonTree = pickFiles('addon', {
 var globalExports = globals(pickFiles(addonTree, {srcDir: '/ember-widgets', destDir: '/'}));
 
 // Require.js module loader
-var loader = pickFiles('bower_components', {srcDir: '/loader.js', destDir: '/'});
+// var loader = pickFiles('bower_components', {srcDir: '/loader.js', destDir: '/'});
 
-var jsTree = mergeTrees([globalExports, loader]);
+// var jsTree = mergeTrees([globalExports, loader]);
 
 // Transpile modules
-var compiled = compileES6(jsTree, {
-  wrapInEval: false,
-  loaderFile: 'loader.js',
-  inputFiles: [],
-  ignoredModules: ['ember'],
-  outputFile: '/ember-widgets.js',
-  legacyFilesToAppend: ['globals-output.js']
-});
+// var compiled = compileES6(jsTree, {
+  // wrapInEval: false,
+  // loaderFile: 'loader.js',
+  // inputFiles: [],
+  // ignoredModules: ['ember'],
+  // outputFile: '/ember-widgets.js',
+  // legacyFilesToAppend: ['globals-output.js']
+// });
 
-var logCompiled = log(compiled, { output: 'tree', label: 'compiled tree' });
+// var logCompiled = log(compiled, { output: 'tree', label: 'compiled tree' });
 
 // Wrap in a function which is executed
-wrapped = wrap(logCompiled);
+wrapped = wrap(globalExports);
 
 var loggedWrapped = log(wrapped, { output: 'tree', label: 'wrapped tree' });
 

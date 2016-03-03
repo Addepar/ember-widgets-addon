@@ -111,7 +111,7 @@ Globals.prototype.write = function(readTree, destDir) {
       // output.push("Ember.Handlebars.helper('table-component', " +
                   // "Ember.Table.EmberTableComponent);");
 
-      fs.writeFileSync(path.join(destDir, 'globals-output.js'),
+      fs.writeFileSync(path.join(destDir, 'ember-widgets-export-globals.js'),
           output.join("\n"));
       resolve();
     });

@@ -17,6 +17,8 @@ var Globals = function (inputTree) {
   // we need to maintain the same old names.
   this.globalNameMapping = {
     'ember-widgets/components/modal-box': 'Ember.Widgets.ModalComponent',
+    'ember-widgets/components/multi-select': 'Ember.Widgets.MultiSelectComponent',
+    'ember-widgets/components/popover-box': 'Ember.Widgets.PopoverComponent',
     'ember-widgets/components/typeahead-input': 'Ember.Widgets.TypeaheadComponent'
   };
 };

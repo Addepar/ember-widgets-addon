@@ -16,7 +16,8 @@ var Globals = function (inputTree) {
   // The old global names aren't consistent. For backwards-compatibility
   // we need to maintain the same old names.
   this.globalNameMapping = {
-    'ember-widgets/components/modal-box': 'Ember.Widgets.ModalComponent'
+    'ember-widgets/components/modal-box': 'Ember.Widgets.ModalComponent',
+    'ember-widgets/components/typeahead-input': 'Ember.Widgets.TypeaheadComponent'
   };
 };
 

@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import SelectComponent from 'select-group';
+import SelectGroup from './select-group';
 import layout from '../templates/components/typeahead-input';
 
-export default SelectComponent.extend({
+export default SelectGroup.extend({
   layout: layout,
   layoutName: 'typeahead',
   searchFieldClass: 'form-control',

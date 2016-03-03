@@ -8,5 +8,6 @@ window.Ember.Widgets.CarouselComponent = require('ember-widgets/components/carou
 window.Ember.Widgets.ModalComponent = require('ember-widgets/components/modal-box')['default'];
 window.Ember.Widgets.MultiSelectComponent = require('ember-widgets/components/multi-select')['default'];
 window.Ember.Widgets.PopoverComponent = require('ember-widgets/components/popover-box')['default'];
+window.Ember.Widgets.PopoverLinkComponent = require('ember-widgets/components/popover-link')['default'];
 window.Ember.Widgets.SelectComponent = require('ember-widgets/components/select-group')['default'];
 window.Ember.Widgets.TypeaheadComponent = require('ember-widgets/components/typeahead-input')['default'];})();

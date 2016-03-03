@@ -4,6 +4,7 @@ define('ember', ['exports'], function(__exports__) {
 });
 
 window.Ember.Widgets = Ember.Namespace.create();
+window.Ember.Widgets.CarouselComponent = require('ember-widgets/components/carousel-group')['default'];
 window.Ember.Widgets.ModalComponent = require('ember-widgets/components/modal-box')['default'];
 window.Ember.Widgets.MultiSelectComponent = require('ember-widgets/components/multi-select')['default'];
 window.Ember.Widgets.PopoverComponent = require('ember-widgets/components/popover-box')['default'];

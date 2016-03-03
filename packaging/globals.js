@@ -16,6 +16,7 @@ var Globals = function (inputTree) {
   // The old global names aren't consistent. For backwards-compatibility
   // we need to maintain the same old names.
   this.globalNameMapping = {
+    'ember-widgets/components/carousel-group': 'Ember.Widgets.CarouselComponent',
     'ember-widgets/components/modal-box': 'Ember.Widgets.ModalComponent',
     'ember-widgets/components/multi-select': 'Ember.Widgets.MultiSelectComponent',
     'ember-widgets/components/popover-box': 'Ember.Widgets.PopoverComponent',

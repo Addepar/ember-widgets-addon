@@ -20,6 +20,7 @@ var Globals = function (inputTree) {
     'ember-widgets/components/modal-box': 'Ember.Widgets.ModalComponent',
     'ember-widgets/components/multi-select': 'Ember.Widgets.MultiSelectComponent',
     'ember-widgets/components/popover-box': 'Ember.Widgets.PopoverComponent',
+    'ember-widgets/components/select-group': 'Ember.Widgets.SelectComponent',
     'ember-widgets/components/typeahead-input': 'Ember.Widgets.TypeaheadComponent'
   };
 };

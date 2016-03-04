@@ -14,6 +14,7 @@ window.Ember.Widgets.MultiSelectComponent = require('ember-widgets/components/mu
 window.Ember.Widgets.MultiSelectOptionView = require('ember-widgets/components/multi-select-option')['default'];
 window.Ember.Widgets.PopoverComponent = require('ember-widgets/components/popover-box')['default'];
 window.Ember.Widgets.PopoverLinkComponent = require('ember-widgets/components/popover-link')['default'];
+window.Ember.Widgets.RadioButtonGroupComponent = require('ember-widgets/components/radio-button-group')['default'];
 window.Ember.Widgets.SelectComponent = require('ember-widgets/components/select-group')['default'];
 window.Ember.Widgets.SelectOptionView = require('ember-widgets/components/select-option')['default'];
 window.Ember.Widgets.SelectTooltipOptionView = require('ember-widgets/components/select-tooltip-option')['default'];

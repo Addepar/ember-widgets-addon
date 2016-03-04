@@ -26,6 +26,7 @@ var Globals = function (inputTree) {
     'ember-widgets/components/multi-select-option': 'Ember.Widgets.MultiSelectOptionView',
     'ember-widgets/components/popover-box': 'Ember.Widgets.PopoverComponent',
     'ember-widgets/components/popover-link': 'Ember.Widgets.PopoverLinkComponent',
+    'ember-widgets/components/radio-button-group': 'Ember.Widgets.RadioButtonGroupComponent',
     'ember-widgets/components/select-group': 'Ember.Widgets.SelectComponent',
     'ember-widgets/components/select-option': 'Ember.Widgets.SelectOptionView',
     'ember-widgets/components/select-tooltip-option': 'Ember.Widgets.SelectTooltipOptionView',

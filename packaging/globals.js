@@ -21,7 +21,6 @@ var Globals = function (inputTree) {
     'ember-widgets/mixins/style-bindings': 'Ember.Widgets.StyleBindingsMixin',
     'ember-widgets/components/carousel-group': 'Ember.Widgets.CarouselComponent',
     'ember-widgets/components/color-picker': 'Ember.Widgets.ColorPicker',
-    'ember-widgets/components/color-picker': 'Ember.Widgets.ColorPickerComponent',
     'ember-widgets/components/modal-box': 'Ember.Widgets.ModalComponent',
     'ember-widgets/components/multi-select': 'Ember.Widgets.MultiSelectComponent',
     'ember-widgets/components/multi-select-option': 'Ember.Widgets.MultiSelectOptionView',

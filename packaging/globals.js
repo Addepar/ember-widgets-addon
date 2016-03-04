@@ -16,12 +16,20 @@ var Globals = function (inputTree) {
   // The old global names aren't consistent. For backwards-compatibility
   // we need to maintain the same old names.
   this.globalNameMapping = {
+    'ember-widgets/components/accordion-group': 'Ember.Widgets.AccordionComponent',
+    'ember-widgets/mixins/body-event-listener': 'Ember.Widgets.BodyEventListener',
+    'ember-widgets/mixins/style-bindings': 'Ember.Widgets.StyleBindingsMixin',
     'ember-widgets/components/carousel-group': 'Ember.Widgets.CarouselComponent',
+    'ember-widgets/components/color-picker': 'Ember.Widgets.ColorPicker',
+    'ember-widgets/components/color-picker': 'Ember.Widgets.ColorPickerComponent',
     'ember-widgets/components/modal-box': 'Ember.Widgets.ModalComponent',
     'ember-widgets/components/multi-select': 'Ember.Widgets.MultiSelectComponent',
+    'ember-widgets/components/multi-select-option': 'Ember.Widgets.MultiSelectOptionView',
     'ember-widgets/components/popover-box': 'Ember.Widgets.PopoverComponent',
     'ember-widgets/components/popover-link': 'Ember.Widgets.PopoverLinkComponent',
     'ember-widgets/components/select-group': 'Ember.Widgets.SelectComponent',
+    'ember-widgets/components/select-option': 'Ember.Widgets.SelectOptionView',
+    'ember-widgets/components/select-tooltip-option': 'Ember.Widgets.SelectTooltipOptionView',
     'ember-widgets/components/typeahead-input': 'Ember.Widgets.TypeaheadComponent'
   };
 };

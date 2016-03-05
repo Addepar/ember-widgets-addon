@@ -12,7 +12,7 @@
     {{/if}}
     <span class="pull-right fa fa-caret-down color-picker-dropdown-caret"></span>
   </a>
-  <div {{bind-attr class=":dropdown-menu :color-picker-dropdown dropdownClass"}}"
+  <div {{bind-attr class=":dropdown-menu :color-picker-dropdown dropdownClass"}}
     role="menu" aria-labelledby="dLabel">
     {{#each row in colorRows}}
       <div class="color-row clearfix">
@@ -28,7 +28,7 @@
       <div class="form-group form-group-sm">
         <div class="input-group">
           <span {{bind-attr class=":input-group-addon
-            :color-picker-custom-preview isCustomColor:active"}}"
+            :color-picker-custom-preview isCustomColor:active"}}
             style="customColorCSS" {{action "sendCustomColor"}}></span>
           {{input type="text"
             value=customColor

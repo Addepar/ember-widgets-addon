@@ -12,7 +12,6 @@ Router.map(function() {
   }, function() {
     this.route('overview');
     this.route('documentation');
-    this.route('accordion');
     this.route('carousel');
     this.route('modal');
     this.route('popover');

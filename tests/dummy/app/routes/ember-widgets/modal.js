@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import CustomModalContentView from 'dummy/views/custom-modal-content';
-import ModalComponent from 'ember-widgets/components/modal-box';
+import ModalComponent from 'ember-widgets/components/modal-component';
 
 export default Ember.Route.extend({
   actions: {

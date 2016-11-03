@@ -1,1 +1,1 @@
-export { default } from 'ember-widgets/components/popover-link';
+export { default } from 'ember-widgets/components/popover-link-component';

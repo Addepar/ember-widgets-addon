@@ -1,51 +1,96 @@
 import Ember from 'ember';
-import ColorPicker from '../utils/color-picker';
-import layout from '../templates/components/color-picker';
+import ColorPickerMixin from '../mixins/color-picker';
 
-export default Ember.Component.extend({
-  layout: layout,
-  // layoutName: 'color-picker',
+export default Ember.Component.extend(ColorPickerMixin, {
+  layoutName: 'color-picker',
   classNames: ['color-picker-button'],
   colorPickerPlacement: 'right',
   dropdownClass: null,
-  INITIAL_COLOR: '#0074D9',
+  /**
+   * The color palette preset. It is passed in from the ColorPickerComponent.
+   * @type {array} an array of two arrays of hex color strings. The two arrays
+   * corresponding to the two color palettes displayed in the dropdown.
+  */
+
+  colorRows: Ember.computed(function() {
+    return Ember.A([Ember.A(['#000000', '#111111', '#434343', '#666666', '#999999', '#AAAAAA', '#B7B7B7', '#CCCCCC', '#D9D9D9', '#EFEFEF', '#F3F3F3', '#FFFFFF']), Ember.A(['#001F3F', '#0074D9', '#7FDBFF', '#39CCCC', '#2ECC40', '#01FF70', '#FFDC00', '#FF851B', '#FF4136', '#85144B', '#B10DC9', 'transparent'])]);
+  }),
+  /**
+   * This is the partial template for the colorPicker button.
+   * It allows developers to override/style this component differently
+   * @type {string}
+  */
+
+  colorPickerButtonPartial: 'color-picker-button-partial',
+  /**
+   * This is a boolean to control if we should render the colorPicker dropdown
+   * or not. Instead of hiding it using CSS, we use this flag to control the
+   * rendering.
+   * @type {boolean}
+  */
+
+  isDropdownOpen: false,
   selectedColor: '#0074D9',
-  selectedColorRGB: Ember.computed(function() {
-    return ColorPicker.colorToHex(this.get('selectedColor'));
-  }).property('selectedColor'),
   customColor: '',
+  /**
+   * The property indicates that we have a custom color selected or a color
+   * from color palette selected.
+   * @type {boolean}
+  */
+
+  isCustomColor: Ember.computed.notEmpty('customColor'),
+  /**
+   * Determines whether the color is transparent so the cell renders the
+   * transparent style properly
+   * @type {Boolean}
+  */
+
   isColorTransparent: Ember.computed.equal('selectedColorRGB', 'transparent'),
-  colorRows: Ember.A([Ember.A(['#000000', '#111111', '#434343', '#666666', '#999999', '#AAAAAA', '#B7B7B7', '#CCCCCC', '#D9D9D9', '#EFEFEF', '#F3F3F3', '#FFFFFF']), Ember.A(['#001F3F', '#0074D9', '#7FDBFF', '#39CCCC', '#2ECC40', '#01FF70', '#FFDC00', '#FF851B', '#FF4136', '#85144B', '#B10DC9', 'transparent'])]),
-  setCustomColor: Ember.on('init', Ember.observer(function() {
+  selectedColorRGB: Ember.computed(function() {
     var selectedColor;
     selectedColor = this.get('selectedColor');
-    selectedColor = ColorPicker.colorToHex(selectedColor);
-    if (this.get('colorRows').find(function(row) {
-      return _.contains(row.invoke('toLowerCase'), selectedColor);
-    })) {
-      return this.set('customColor', '');
-    }
-    return this.set('customColor', selectedColor);
-  }, 'selectedColor', 'colorRows')),
-  isCustomColorValid: Ember.computed(function() {
-    return /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test("" + (this.get('customColor')));
-  }).property('customColor'),
-  customColorCSS: Ember.computed(function() {
-    return "background-color: " + (this.get('customColor'));
-  }).property('customColor'),
+    return this.colorToHex(selectedColor);
+  }).property('selectedColor'),
   actions: {
-    setColor: function(color) {
-      this.set('customColor', '');
-      return this.set('selectedColor', color);
+    /**
+     * This action is bound to the colorPicker button to hide/show the dropdown
+     * when users click on it.
+    */
+
+    toggleDropdown: function() {
+      return this.toggleProperty('isDropdownOpen');
     },
-    sendCustomColor: function() {
-      var color;
-      color = this.get('customColor');
+    /**
+     * Send an action outside of the component to inform that a new
+     * color is select and also to hide the dropdown.
+     * @param {String} selection the selected color hex string
+    */
+
+    userSelected: function(selection) {
+      this.sendAction('userSelected', selection);
+      return this.set('isDropdownOpen', false);
+    },
+    /**
+     * Hide the color picker dropdown
+    */
+
+    hideDropdown: function() {
+      return this.set('isDropdownOpen', false);
+    },
+    /**
+     * Set the selected color and update the custom color accordingly
+     * @param {string}  color the selected color to be updated
+     * @param {boolean} isCustomColor the flag to indicate if it is a custom
+     *                  color
+    */
+
+    setSelectedColor: function(color, isCustomColor) {
       this.set('selectedColor', color);
-      return this.userDidSelect(color);
+      if (isCustomColor) {
+        return this.set('customColor', color);
+      } else {
+        return this.set('customColor', '');
+      }
     }
-  },
-  userDidSelect: function(selection) {
-    return this.sendAction('userSelected', selection);
   }
 });

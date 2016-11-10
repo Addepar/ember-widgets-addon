@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import StyleBindingsMixin from '../../../mixins/style-bindings';
+import StyleBindingsMixin from 'ember-widgets/mixins/style-bindings';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | style bindings');

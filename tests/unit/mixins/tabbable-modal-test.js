@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import TabbableModalMixin from '../../../mixins/tabbable-modal';
+import TabbableModalMixin from 'ember-widgets/mixins/tabbable-modal';
 import { module, test } from 'qunit';
 
 module('Unit | Mixin | tabbable modal');

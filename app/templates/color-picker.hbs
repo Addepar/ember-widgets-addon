@@ -1,0 +1,12 @@
+{{partial colorPickerButtonPartial}}
+{{#if isDropdownOpen}}
+  {{color-picker-dropdown
+    dropdownClass=dropdownClass
+    colorRows=colorRows
+    userSelected="userSelected"
+    hideDropdown="hideDropdown"
+    setSelectedColor="setSelectedColor"
+    customColor=customColor
+    selectedColor=selectedColor
+  }}
+{{/if}}
